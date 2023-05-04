@@ -8,7 +8,7 @@ const PORT = 3001;
 
 require('dotenv').config();
 
-// app.use(bodyParser.json({limit:'50mb'})) // for uploading large file in cloudinary
+app.use(bodyParser.json({ limit: '50mb' })); // for uploading large file in cloudinary
 
 app.use(
   bodyParser.urlencoded({

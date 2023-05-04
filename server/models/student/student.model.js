@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const { TestTypeSchema } = require('./testType.schema');
-const { weekMarksSchema } = require('./weekMarks.schema');
+const { TestTypeSchema } = require('./schemas/testType.schema');
+const { weekMarksSchema } = require('./schemas/weekMarks.schema');
 
 const StudentSchema = new mongoose.Schema({
   name: {
