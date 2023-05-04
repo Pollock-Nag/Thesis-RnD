@@ -1,9 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const connection = require('./db/connection');
+const studentsRoute = require('./routes/students.route');
 const app = express();
 const PORT = 3001;
-const connect = require('./db/connection');
+
 require('dotenv').config();
 
 // app.use(bodyParser.json({limit:'50mb'})) // for uploading large file in cloudinary
@@ -14,8 +16,9 @@ app.use(
   })
 );
 app.use(cors());
-// app.use(express.json());
+app.use(express.json());
+app.use('/students', studentsRoute);
 
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+  console.log(`🚀  Listening on port ${PORT}`);
 });
