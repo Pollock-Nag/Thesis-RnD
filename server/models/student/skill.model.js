@@ -6,11 +6,11 @@ const SkillSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true,
   },
   marks: {
     type: Number,
     required: true,
   },
 });
-module.export = SkillSchema;
+const Skill = mongoose.model('Skill', SkillSchema);
+module.exports = Skill;

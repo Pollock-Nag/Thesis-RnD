@@ -1,3 +1,4 @@
+const Skill = require('../models/student/skill.model');
 const Student = require('../models/student/student.model');
 
 const getAllStudents = (req, res) => {
@@ -14,10 +15,7 @@ const createStudent = async (req, res) => {
 
   try {
     let student = new Student({
-      name,
-      email,
-      password,
-      type,
+      ...req.body,
     });
 
     await student.save();
@@ -29,8 +27,24 @@ const createStudent = async (req, res) => {
   }
 };
 
+const getJuniorSoftSkillsFirstWeek = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const student = await Student.findById(id);
+    if (!student) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+
+    res.status(200).json(student);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 module.exports = {
   getAllStudents,
   createStudent,
   getStudentByID,
+  getJuniorSoftSkillsFirstWeek,
 };
