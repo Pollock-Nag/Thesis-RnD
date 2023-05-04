@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const { TestTypeSchema } = require('./testType.schema');
+const { weekMarksSchema } = require('./weekMarks.schema');
 
-export const StudentSchema = new mongoose.Schema({
+const StudentSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -42,13 +43,9 @@ export const StudentSchema = new mongoose.Schema({
     type: [TestTypeSchema],
   },
   junior: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Junior',
-    required: true,
-  },
-  senior: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Senior',
-    required: true,
+    type: [weekMarksSchema],
   },
 });
+
+const Student = mongoose.model('Student', StudentSchema);
+module.exports = Student;

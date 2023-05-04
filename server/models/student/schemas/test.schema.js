@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-export const TestSchema = new mongoose.Schema({
+const TestSchema = new mongoose.Schema({
   marks: {
     type: Number,
     required: true,
@@ -9,3 +9,5 @@ export const TestSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+module.exports = TestSchema;

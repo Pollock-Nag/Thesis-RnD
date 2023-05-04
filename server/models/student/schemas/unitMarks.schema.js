@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-export const UnitMarksSchema = new mongoose.Schema({
+const UnitMarksSchema = new mongoose.Schema({
   unitName: {
     type: String,
     required: true,
@@ -9,3 +9,5 @@ export const UnitMarksSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+module.exports = UnitMarksSchema;

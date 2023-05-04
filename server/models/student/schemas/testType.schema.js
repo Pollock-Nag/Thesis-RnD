@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-import { TestSchema } from './test.schema';
+const { TestSchema } = require('./test.schema');
 
-export const TestTypeSchema = new mongoose.Schema({
+const TestTypeSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -11,3 +11,4 @@ export const TestTypeSchema = new mongoose.Schema({
     required: true,
   },
 });
+module.exports = TestTypeSchema;

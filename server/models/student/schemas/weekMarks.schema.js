@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-import { SkillSchema } from './skill.schema';
-import { UnitMarksSchema } from './unitMarks.schema';
+const { SkillSchema } = require('./skill.schema');
+const { UnitMarksSchema } = require('./unitMarks.schema');
 
-export const WeekMarksSchema = new mongoose.Schema({
+const WeekMarksSchema = new mongoose.Schema({
   weekName: {
     type: String,
     required: true,
@@ -24,3 +24,5 @@ export const WeekMarksSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+module.export = WeekMarksSchema;
