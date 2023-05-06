@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const connection = require('./db/connection');
 const studentsRoute = require('./routes/students.route');
 const skillRoute = require('./routes/skill.route');
+const githubRoute = require('./routes/github.route');
 const app = express();
 const PORT = 3001;
 
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/students', studentsRoute);
 app.use('/skill', skillRoute);
+app.use('/github', githubRoute);
 
 app.listen(PORT, () => {
   console.log(`🚀  Listening on port ${PORT}`);
