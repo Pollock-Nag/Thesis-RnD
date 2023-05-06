@@ -15,9 +15,9 @@ const createStudent = async (req, res) => {
   try {
     let student = new Student({
       ...req.body,
-
-      junior: juniorWeeks,
-      senior: seniorWeeks,
+      // uncomment when you done testing
+      // junior: juniorWeeks,
+      // senior: seniorWeeks,
     });
 
     await student.save();
@@ -44,9 +44,41 @@ const getJuniorSoftSkillsFirstWeek = async (req, res) => {
   }
 };
 
+const getStudentWeekInfo = async (req, res) => {
+  const { id, week } = req.params;
+  try {
+    const student = await Student.findById(id)
+      .populate({
+        path: 'junior',
+        populate: {
+          path: 'softSkills.skill',
+          model: 'Skill',
+        },
+      })
+      .populate({
+        path: 'senior',
+        populate: {
+          path: 'softSkills.skill',
+          model: 'Skill',
+        },
+      });
+    if (!student) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+    const { type } = student;
+    const weekInfo = student[type][week - 1];
+
+    res.status(200).json(weekInfo);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 module.exports = {
   getAllStudents,
   createStudent,
   getStudentByID,
   getJuniorSoftSkillsFirstWeek,
+  getStudentWeekInfo,
 };

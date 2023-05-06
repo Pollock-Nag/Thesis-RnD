@@ -9,5 +9,9 @@ router.get(
   '/getJuniorSoftSkillsFirstWeek/:id',
   studentsControllers.getJuniorSoftSkillsFirstWeek
 );
+router.get(
+  '/getStudentWeekInfo/:id/:week',
+  studentsControllers.getStudentWeekInfo
+);
 
 module.exports = router;

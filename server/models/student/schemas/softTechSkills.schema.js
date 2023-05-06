@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const softTechSkill = new mongoose.Schema({
-  skillName: {
+  skill: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Skill',
   },

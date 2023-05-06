@@ -9,11 +9,9 @@ const weekMarksSchema = new mongoose.Schema({
   },
   softSkills: {
     type: [softTechSkill],
-    ref: 'Skill',
   },
   techSkills: {
     type: [softTechSkill],
-    required: 'Skill',
   },
   assessmentMarks: {
     type: Number,
