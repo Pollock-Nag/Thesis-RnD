@@ -13,5 +13,9 @@ router.get(
   '/getStudentWeekInfo/:id/:week',
   studentsControllers.getStudentWeekInfo
 );
+router.post(
+  '/addSoftTechSkillsByID/:id',
+  studentsControllers.addSoftTechSkillsByStudentID
+);
 
 module.exports = router;

@@ -91,6 +91,30 @@ const getStudentWeekInfo = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+const addSoftTechSkillsByStudentID = async (req, res) => {
+  const { id } = req.params;
+  const { week, softSkills, techSkills } = req.body;
+  try {
+    const student = await Student.findById(id);
+    if (!student) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+
+    const { type } = student;
+    const weekInfo = student[type][week - 1];
+
+    weekInfo.softSkills = softSkills;
+    weekInfo.techSkills = techSkills;
+
+    await student.save();
+
+    res.status(200).json(weekInfo);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+  // give me a json data like this
+};
 
 module.exports = {
   getAllStudents,
@@ -98,4 +122,5 @@ module.exports = {
   getStudentByID,
   getJuniorSoftSkillsFirstWeek,
   getStudentWeekInfo,
+  addSoftTechSkillsByStudentID,
 };
