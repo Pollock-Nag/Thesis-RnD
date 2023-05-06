@@ -11,7 +11,7 @@ const getStudentByID = async (req, res) => {
 };
 
 const createStudent = async (req, res) => {
-  const { name, email, password, type } = req.body;
+  // const { name, email, password, type } = req.body;
 
   try {
     let student = new Student({

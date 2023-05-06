@@ -1,75 +1,7 @@
 const mongoose = require('mongoose');
+const TestTypeSchema = require('./schemas/testType.schema');
+const weekMarksSchema = require('./schemas/weekMarksSchema');
 
-const UnitMarksSchema = new mongoose.Schema({
-  unitName: {
-    type: String,
-    required: true,
-  },
-  marks: {
-    type: Number,
-    required: true,
-  },
-});
-
-const TestSchema = new mongoose.Schema({
-  marks: {
-    type: Number,
-    required: true,
-  },
-  weekName: {
-    type: String,
-    required: true,
-  },
-});
-const TestTypeSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  tests: {
-    type: [TestSchema],
-    required: true,
-  },
-});
-
-softSkill = new mongoose.Schema({
-  skillName: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Skill',
-  },
-  marks: Number,
-});
-
-techSkill = new mongoose.Schema({
-  skillName: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Skill',
-  },
-  marks: Number,
-});
-
-const WeekMarksSchema = new mongoose.Schema({
-  weekName: {
-    type: String,
-    required: true,
-  },
-  softSkills: {
-    type: [softSkill],
-    ref: 'Skill',
-  },
-  techSkills: {
-    type: [techSkill],
-    required: 'Skill',
-  },
-  assessmentMarks: {
-    type: Number,
-    required: true,
-  },
-  unitMarks: {
-    type: [UnitMarksSchema],
-    required: true,
-  },
-});
 const StudentSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -111,7 +43,10 @@ const StudentSchema = new mongoose.Schema({
     type: [TestTypeSchema],
   },
   junior: {
-    type: [WeekMarksSchema],
+    type: [weekMarksSchema],
+  },
+  senior: {
+    type: [weekMarksSchema],
   },
 });
 

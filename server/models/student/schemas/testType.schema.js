@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { TestSchema } = require('./test.schema');
+const TestSchema = require('./test.schema');
 
 const TestTypeSchema = new mongoose.Schema({
   name: {

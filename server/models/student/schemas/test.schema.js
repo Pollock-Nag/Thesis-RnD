@@ -9,5 +9,4 @@ const TestSchema = new mongoose.Schema({
     required: true,
   },
 });
-
 module.exports = TestSchema;
