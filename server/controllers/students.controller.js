@@ -1,6 +1,7 @@
 const Skill = require('../models/student/skill.model');
 const Student = require('../models/student/student.model');
-
+const juniorWeeks = require('./juniorWeeks.json');
+const seniorWeeks = require('./seniorWeeks.json');
 const getAllStudents = (req, res) => {
   res.send('Fetching All Students 200');
 };
@@ -11,11 +12,12 @@ const getStudentByID = async (req, res) => {
 };
 
 const createStudent = async (req, res) => {
-  // const { name, email, password, type } = req.body;
-
   try {
     let student = new Student({
       ...req.body,
+
+      junior: juniorWeeks,
+      senior: seniorWeeks,
     });
 
     await student.save();
