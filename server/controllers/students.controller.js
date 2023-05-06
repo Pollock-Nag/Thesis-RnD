@@ -61,12 +61,29 @@ const getStudentWeekInfo = async (req, res) => {
           path: 'softSkills.skill',
           model: 'Skill',
         },
+      })
+      .populate({
+        path: 'junior',
+        populate: {
+          path: 'techSkills.skill',
+          model: 'Skill',
+        },
+      })
+      .populate({
+        path: 'senior',
+        populate: {
+          path: 'techSkills.skill',
+          model: 'Skill',
+        },
       });
     if (!student) {
       return res.status(404).json({ message: 'Student not found' });
     }
+
     const { type } = student;
     const weekInfo = student[type][week - 1];
+
+    // console.log(weekInfo.softSkills[0].skill.category);
 
     res.status(200).json(weekInfo);
   } catch (error) {
